@@ -1,6 +1,6 @@
 ## JAVA - Mạc Khải Quân
 
-#### **[Bài tập 1](https://github.com/grazerjink/java/tree/master/Baitap1/src/Baitap/java) — Lập trình cơ bản với yêu cầu :**
+#### [Bài tập 1](https://github.com/grazerjink/java/tree/master/Baitap1/src/Baitap/java) — Lập trình cơ bản với yêu cầu :
 
 1. Kiểm tra năm nhuận
 
@@ -119,7 +119,7 @@ public class baitap {
 }
 ~~~
 
-#### **[Bài tập 2](https://github.com/grazerjink/java/tree/master/Baitap2/src/Baitap2/java) — Lập trình 2 lớp hỗn số và phân số**
+#### [Bài tập 2](https://github.com/grazerjink/java/tree/master/Baitap2/src/Baitap2/java) — Lập trình 2 lớp hỗn số và phân số
 
 ###### Class PHANSO bao gồm những phương thức : 
 
@@ -324,7 +324,7 @@ public class Main {
 }
 ~~~
 
-#### **[Baitap_NhapXuat](https://github.com/grazerjink/java/tree/master/Baitap_NhapXuat/src/baitap/io) — Ghi / Xuất File**
+#### [Baitap_NhapXuat](https://github.com/grazerjink/java/tree/master/Baitap_NhapXuat/src/baitap/io) — Ghi / Xuất File
 
 **Nội dung file là thông tin của sinh viên, Thực hiện đọc file đó lên hiện lên console và thêm nội dung ghi ra 1 file chứa nội dung mới ... ( Có kèm giao diện console )**
 
@@ -473,9 +473,9 @@ public class FILE {
 }
 ~~~
 
-#### **[Baitap_mang](https://github.com/grazerjink/java/tree/master/Baitap_mang) — Làm việc với mảng**
+#### [Baitap_mang](https://github.com/grazerjink/java/tree/master/Baitap_mang) — Làm việc với mảng
 
-** Tạo mảng cho đối tượng **
+**Tạo mảng cho đối tượng**
 
 - PHANSO
 
@@ -606,7 +606,7 @@ public class MATRAN {
 }
 ~~~
 
-** Tạo các phương thức tính toán kiểm tra cho MANGPS **
+**Tạo các phương thức tính toán kiểm tra cho MANGPS**
 
 ~~~
 public class BAITAP {
