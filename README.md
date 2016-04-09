@@ -472,3 +472,242 @@ public class FILE {
 	}
 }
 ~~~
+
+#### **[Baitap_mang](https://github.com/grazerjink/java/tree/master/Baitap_mang) — Làm việc với mảng**
+
+** Tạo mảng cho đối tượng **
+
+- PHANSO
+
+~~~
+public class MANGPS {
+	PHANSO []m;
+	public MANGPS(){
+		m = new PHANSO[0];
+	}
+	public MANGPS(int n){
+		m = new PHANSO[n];
+	}
+	
+	void nhapMPS(){
+		Random r = new Random();
+		for(int i=0; i<m.length; i++)
+		{
+			int ts = r.nextInt(101);
+			int ms = r.nextInt(101)+1;
+			m[i] = new PHANSO(ts,ms);
+			m[i].RutGon();
+		}
+	}
+	
+	void xuatMPS(){
+		for(int i=0; i<m.length; i++)
+			System.out.print(m[i].getTu()+"/"+m[i].getMau()+"\t");
+		System.out.print("\n");
+	}
+	
+	void tinhTong(){
+		PHANSO s = new PHANSO();
+		for(int i=0; i<m.length; i++)
+		{
+			s.CongPS(m[i]);
+			s.RutGon();
+		}
+		System.out.println("Tong mang phan so: "+s.getTu()+"/"+s.getMau());
+	}
+	
+	void tinhTich(){
+		PHANSO s = new PHANSO(1,1);
+		for(int i=0; i<m.length; i++)
+		{
+			s.NhanPS(m[i]);
+			s.RutGon();
+		}
+		System.out.println("Tich mang phan so: "+s.getTu()+"/"+s.getMau());
+	}
+}
+~~~
+
+- MATRAN — Mảng 2 chiều
+
+~~~
+public class MATRAN {
+	int m[][];
+	int row;
+	int col;
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	public void setCol(int col) {
+		this.col = col;
+	}
+
+	public MATRAN(){
+		col = 1;
+		row = 1;
+		m = new int[1][1];
+	}
+	
+	public MATRAN(int col,int row){
+		this.col = col;
+		this.row = row;
+		m = new int[col][row];
+	}
+	
+	void nhap(){
+		Random rd = new Random();
+		for(int i=0;i<row;i++)
+			for(int j=0;j<col;j++)
+				m[i][j] = rd.nextInt(51)+1;
+	}
+	
+	void xuat(){
+		for(int i=0;i<row;i++)
+		{
+			for(int j=0;j<col;j++)
+				System.out.print(m[i][j]+"\t");
+			System.out.print("\n");
+		}
+		System.out.print("\n");
+	}
+	
+	void sapXep(){
+		//Bubble Sort theo dong
+		   for(int k = 0; k<row ; k++)
+		      for(int i = 0; i<col-1 ; i++)
+		      for(int j = col-1; j>i ; j--)
+		      if(m[k][j]<m[k][j-1])
+		      {
+		         int temp = m[k][j];
+		         m[k][j] = m[k][j-1];
+		         m[k][j-1] = temp;
+		      }
+		   
+		   //Bubble Sort theo cot
+		   for(int k = 0; k<col ; k++)
+			      for(int i = 0; i<row-1 ; i++)
+			      for(int j = row-1; j>i ; j--)
+			      if(m[j][k]<m[j-1][k])
+			      {
+			         int temp = m[j][k];
+			         m[j][k] = m[j-1][k];
+			         m[j-1][k] = temp;
+			      }
+	}
+}
+~~~
+
+** Tạo các phương thức tính toán kiểm tra cho MANGPS **
+
+~~~
+public class BAITAP {
+	
+	void nhap(int []m){
+		Random rd = new Random();
+		for(int i=0; i< m.length; i++)
+			m[i] = rd.nextInt(100)-50;
+	}
+	
+	void xuat(int []m){
+		for(int i=0; i< m.length; i++)
+			System.out.print(m[i]+"\t");
+		System.out.println("\n");
+	}
+	
+	void sapXep(int[]m){
+		for(int i=0; i< m.length - 1 ; i++)
+			for(int j=i+1; j<m.length;j++)
+				if(m[i]>m[j]) doiViTri(m,i,j);
+	}
+	
+	void sapXepChanLe(int []m){
+		for(int i=0; i< m.length - 1 ; i++)
+			for(int j=i+1; j<m.length;j++)
+				if((m[i]%2==0 && m[j]%2==0) && (m[i]>m[j])) doiViTri(m,i,j);
+				else if((m[i]%2!=0 && m[j]%2!=0) && (m[i]>m[j])) doiViTri(m, i, j);
+	}
+	
+	void sapXepNgTo(int []m){
+		for(int i=0; i< m.length - 1 ; i++)
+			for(int j=i+1; j<m.length;j++)
+				if((kiemTraNgTo(m[i])==1 && kiemTraNgTo(m[j])==1) && (m[i]>m[j])) doiViTri(m,i,j);
+	}
+	
+	void sapXepCP(int []m){
+		for(int i=0; i< m.length - 1 ; i++)
+			for(int j=i+1; j<m.length;j++)
+				if((kiemTraCP(m[i]) && kiemTraCP(m[j])) && (m[i]>m[j])) doiViTri(m,i,j);
+	}
+	
+	void tinhTong(int []m){
+		int s=0;
+		for(int i=0; i< m.length ; i++)
+			s+=m[i];
+		System.out.println("Tong day so nguyen n: "+s);
+	}
+	
+	void tinhTich(int []m){
+		int s=1;
+		for(int i=0; i< m.length ; i++)
+			s=s*m[i];
+		System.out.println("Tich day so nguyen n: "+s);
+	}
+	
+	int kiemTraNgTo(int n){
+		if(n<2) return 0;
+		for(int i=2; i<= Math.sqrt((float)n);i++)
+				if(n%i==0) return 0;
+		return 1;
+	}
+	
+	boolean kiemTraCP(int n){
+		return Math.sqrt(n) == (int)(Math.sqrt(n));
+	}
+	
+	void doiViTri(int []m,int i,int j){
+		int tmp = m[i];
+		m[i] = m[j];
+		m[j] = tmp;
+	}
+}
+~~~
+
+> Class main đề chạy chương trình 
+
+~~~
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*int m[] = new int[12];
+		BAITAP c1 = new BAITAP();
+		c1.nhap(m);
+		c1.xuat(m);
+		c1.sapXep(m);
+		c1.xuat(m);
+		c1.tinhTich(m);*/
+		
+		/*MANGPS a = new MANGPS(3);
+		a.nhapMPS();
+		a.xuatMPS();
+		a.tinhTong();
+		a.tinhTich();*/
+		
+		MATRAN a = new MATRAN(4,4);
+		a.nhap();
+		a.xuat();
+		a.sapXep();
+		a.xuat();
+	}
+
+}
+~~~
